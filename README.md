@@ -1,6 +1,6 @@
 ********************************************************************************
 *                            JRAPL README                                      *
-* Kenan Liu Email: kliu20@binghamton.edu                                       *
+* Kenan Liu Email: kliu20ATbinghamton.edu                                       *
 * JRAPL - RAPL interfaces for Java			                       *
 ********************************************************************************
 
@@ -62,90 +62,6 @@ socket, there is no '@'.
 
 --------------------------------------------------------------
 
-> public native static double[] GetPackagePowerSpec();
-
-Get an array of rapl specifications.
-
-Returns:
-#1 TDP(Watt)
-#2 Minimum power limit(Watt)
-#3 Maximum power limit(Watt)
-#4 Maximum time window(Second)
-
---------------------------------------------------------------
-
-> public native static double[] GetDramPowerSpec();
-
-Get an array of rapl specifications.
-
-Returns:
-#1 TDP(Watt)
-#2 Minimum power limit(Watt)
-#3 Maximum power limit(Watt)
-#4 Maximum time window(Second)
-
---------------------------------------------------------------
-	
-> public native static void SetPackagePowerLimit(int socketId, int level, double customPower);
-
-Set power limit for package.
-
-Parameters:
-socketId-the socket to be set
-level-power limit level to be set
-level key:
-0-Minimum power limit from current machine specifications.
-1-Maximum power limit from current machine specifications.
-2-customized power limit. If it is out range of machine specifications. It would be discarded.
-customPower-customized power. If level is not 2, the value would be discarded.
-
---------------------------------------------------------------
-
-> public native static void SetDramPowerLimit(int socketId, int level, double costomPower);
-
-Set power limit for dram.
-
-Parameters:
-socketId-the socket to be set
-level-power limit level to be set
-level key:
-0-Minimum power limit from current machine specifications.
-1-Maximum power limit from current machine specifications.
-2-customized power limit. If it is out range of machine specifications. It would be discarded.
-customPower-customized power. If level is not 2, the value would be discarded.
-
---------------------------------------------------------------
-
-> public native static void SetPackageTimeWindowLimit(int socketId, int level, double costomTimeWin);
-
-Set time window for package.
-
-Parameters:
-socketId-the socket to be set
-level-time window level to be set
-level key:
-0-Minimum time window is not available
-1-Maximum time window limit from current machine specifications.
-2-customized time window limit. If it is out range of machine specifications. It would be discarded.
-customTimeWin-customized time window. If level is not 2, the value would be discarded.
-
---------------------------------------------------------------
-
-> public native static void SetDramTimeWindowLimit(int socketId, int level, double costomTimeWin);
-
-Set time window for dram.
-
-Parameters:
-socketId-the socket to be set
-level-time window level to be set
-level key:
-0-Minimum time window is not available
-1-Maximum time window limit from current machine specifications.
-2-customized time window limit. If it is out range of machine specifications. It would be discarded.
-customTimeWin-customized time window. If level is not 2, the value would be discarded.
-
---------------------------------------------------------------
-
 > public native static void ProfileDealloc();
 
 Free the memory initialized in ProfileInit().
@@ -157,6 +73,4 @@ Limitations:
 It only works for at most 2 sockets CPU. 
 
 
-Contact Info:
 
-Kenan Liu kliu20ATbinghamtonDOTedu
