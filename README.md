@@ -1,80 +1,69 @@
-********************************************************************************
-*                            JRAPL README                                      *
-* Kenan Liu Email: kliu20ATbinghamton.edu                                       *
-* JRAPL - RAPL interfaces for Java			                       *
-********************************************************************************
-
-
 Introduction:
 --------------------------------------------------------------
 
-It works for three architectures -- sandy bridge, sandy bridge_ep (server) and ivy bridge.
+For a general explanation, check our [webpage](http://kliu20.github.io/jRAPL/).
 
-sandy bridge/ivy bridge supports: gpu, cpu and package measurement.
+jRAPL works for three Intel architectures -- Sandy Bridge, Sandy Bridge_ep (Server) and Ivy Bridge. Each architecture has different RAPL support.
 
-sandy bridge_ep supports: dram, cpu and package measurement.
+- Sandy Bridge/Ivy Bridge: GPU, CPU and package support.
 
-You need check which one is your CPU architecture before you use it.
+- Sandy Bridge_ep: DRAM, CPU and package support.
 
-Main reference: https://software.intel.com/en-us/articles/intel-power-governor
+You need check which one is your CPU architecture before you use jRAPL.
 
-Prerequisites: 
+For more details about RAPL, check the main [reference](https://software.intel.com/en-us/articles/intel-power-governor)
+
+Pre-requisites:
 --------------------------------------------------------------
 
-This library uses the kernel msr module. To use, type
+This library uses the kernel `msr` module. To use, type
 
-`sudo modprobe msr`
+```
+sudo modprobe msr
+```
 
 Build
 --------------------------------------------------------------
 
-Generate the library for JNI
+To generate the library for JNI, type
 
-`make`
+```
+make
+```
 
 How to use
 --------------------------------------------------------------
 
-Everytime you need root/sudo access to run the java code in order to access rapl msr.
+Everytime you need root/sudo access to run the Java code in order to access RAPL MSR.
 
 `EnergyCheckUtils.java` is a sample drive code.
 
-It includes the following methods, and it needs to be declared like the following before call them in java:
+It includes the following methods, and it needs to be declared like the following before usage:
 
---------------------------------------------------------------
+- `public native static int ProfileInit();` Initializes jRAPL. Just needs call once in the beginning.
 
-`public native static int ProfileInit();`
-
-Initialize jRAPL. Just needs call once in the beginning.
-
-Expected return:
-
-wraparound energy value.
-
---------------------------------------------------------------
-
-`public native static String EnergyStatCheck();`
-
-For `EnergyStatCheck()`, it would return a string value, which contains the format of content like: 
+- `public native static String EnergyStatCheck();`: It returns a string value, which contains the format of content like:
 
 socket1_gpu/dram_energy#socket1_cpu_energy#socket1_package_energy@socket2_gpu/dram_energy#socket2_cpu_energy#socket2_package_energy....
 
 The character '#' to seperate the energy metric information wthin the socket. Character '@' to seperate different socket. If it only has one socket, there is no '@'.
 
---------------------------------------------------------------
-
-`public native static void ProfileDealloc();`
-
-Free the memory initialized in ProfileInit().
+- `public native static void ProfileDealloc();`: Free the memory initialized in `ProfileInit()`.
 
 
 Known limitations:
 --------------------------------------------------------------
 
-It only works for at most 2 sockets CPU. 
+It only works for at most 2 sockets CPU.
 
 
 Contributions
 --------------------------------------------------------------
 
-If you find any bug, please open an issue explain what happened.
+Want to contribute with code, documentation or bug report? That's great, check out the Issues page.
+
+
+Contact
+--------------------------------------------------------------
+
+- Kenan Liu {kliu20@binghamton.edu}
