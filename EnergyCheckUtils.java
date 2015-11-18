@@ -80,7 +80,7 @@ public class EnergyCheckUtils {
 		}
 		double[] after = getEnergyStats();
 		for(int i = 0; i < socketNum; i++) {
-			System.out.println("dram: " + (after[0] - before[0]) / 10.0 + " cpu: " + (after[1] - before[1]) / 10.0 + " package: " + (after[2] - before[2]) / 10.0);
+			System.out.println("Power consumption of dram: " + (after[0] - before[0]) / 10.0 + " power consumption of cpu: " + (after[1] - before[1]) / 10.0 + " power consumption of package: " + (after[2] - before[2]) / 10.0);
 		}
 		ProfileDealloc();
 	}
