@@ -1,3 +1,5 @@
+package jrapl;
+
 import java.lang.reflect.Field;
 public class EnergyCheckUtils {
 	public native static int scale(int freq);

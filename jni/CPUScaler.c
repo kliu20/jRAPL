@@ -36,7 +36,7 @@ void copy_to_string(char *ener_info, char uncore_buffer[60], int uncore_num, cha
 }
 
 
-JNIEXPORT jint JNICALL Java_EnergyCheckUtils_ProfileInit(JNIEnv *env, jclass jcls) {
+JNIEXPORT jint JNICALL Java_jrapl_EnergyCheckUtils_ProfileInit(JNIEnv *env, jclass jcls) {
 	jintArray result;
 	int i;
 	char msr_filename[BUFSIZ];
@@ -67,12 +67,12 @@ JNIEXPORT jint JNICALL Java_EnergyCheckUtils_ProfileInit(JNIEnv *env, jclass jcl
 	return wraparound_energy;
 }
 
-JNIEXPORT jint JNICALL Java_EnergyCheckUtils_GetSocketNum(JNIEnv *env, jclass jcls) {
+JNIEXPORT jint JNICALL Java_jrapl_EnergyCheckUtils_GetSocketNum(JNIEnv *env, jclass jcls) {
 	return (jint)getSocketNum();
 }
 
 
-JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
+JNIEXPORT jstring JNICALL Java_jrapl_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 		jclass jcls) {
 	jstring ener_string;
 	double result = 0.0;
@@ -192,7 +192,7 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 	return ener_string;
 
 }
-JNIEXPORT void JNICALL Java_EnergyCheckUtils_ProfileDealloc
+JNIEXPORT void JNICALL Java_jrapl_EnergyCheckUtils_ProfileDealloc
    (JNIEnv * env, jclass jcls) {
 	int i;
 	free(fd);	
