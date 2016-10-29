@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jRAPL" basedir="." default="main">  
+	<property name="src.dir"	 value="src"/>
+	<property name="src.jni.dir"	 value="jni"/>
+	<property name="build.dir"	 value="bin"/> 
+	<property name="dist.dir"	value="dist"/>	
+	<property name="lib.dir"   value="lib"/>
+	<property name="verbose" value="false" />	
+   
+	<target name="clean">  
+		<echo message="In clean "/>	
+		<delete dir="${build.dir}"/> 
+		<delete dir="${dist.dir}"/>	 
+	</target>
+   
+	<target name="compile">  
+		<mkdir dir="${build.dir}"/>  
+		<javac srcdir="${src.dir}" destdir="${build.dir}" debug="true"/>
+	</target>  
+   
+	<target name="jni">
+	    <exec executable="make">
+	        <arg line="-f jni/Makefile"/>
+	    </exec>
+	</target>
+	 
+	<target name="jar" depends="compile">  
+		<mkdir dir="${dist.dir}"/>  
+		<jar destfile="${dist.dir}/${ant.project.name}.jar" basedir="${build.dir}">
+		</jar>	
+	</target>  
+	
+	<target name="javah" depends="compile">
+	    <javah destdir="${src.jni.dir}" verbose="yes" force="yes" classpath="${build.dir}">
+	      <class name="jrapl.EnergyCheckUtils"/>
+	    </javah>
+	  </target>
+	
+	<target name="clean-build" depends="clean,jar"/>  
+   
+	<target name="main" depends="clean,jar"/>  
+</project>	
