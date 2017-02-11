@@ -19,7 +19,7 @@ public class EnergyCheckUtils {
 	public static int socketNum;
 	static {
 		System.setProperty("java.library.path", System.getProperty("user.dir"));
-//				System.out.print(System.getProperty("user.dir"));
+				System.out.println(System.getProperty("user.dir"));
 		try {
 			Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
 			fieldSysPath.setAccessible(true);
@@ -41,6 +41,7 @@ public class EnergyCheckUtils {
 	public static double[] getEnergyStats() {
 		socketNum = GetSocketNum();
 		String EnergyInfo = EnergyStatCheck();
+		System.out.println(EnergyInfo);
 		/*One Socket*/
 		if(socketNum == 1) {
 			double[] stats = new double[3];

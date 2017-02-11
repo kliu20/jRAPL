@@ -3,9 +3,15 @@
 #ifndef _ARCH_SPEC_H
 #define _ARCH_SPEC_H
 
+/**
+ * Reference Intel ® 64 and IA-32 Architectures Software Developer’s Manual
+ * for those CPUID information (December 2016)
+ */
 #define SANDYBRIDGE          0x2AU
 #define SANDYBRIDGE_EP       0x2DU
 #define IVYBRIDGE            0x3AU
+#define SKYLAKE1             0x4EU
+#define SKYLAKE2             0x5EU
 #define CPUID                              \
     __asm__ volatile ("cpuid"                             \
 			: "=a" (eax),     \

@@ -27,7 +27,6 @@ void
 get_cpu_model(void)
 {
     uint32_t eax = 0x01;
-//    cpuid_info.family = ((eax>>8)&0xFU) + ((eax>>20)&0xFFU);
 	CPUID;
     cpu_model = (((eax>>16)&0xFU)<<4) + ((eax>>4)&0xFU);
 }
@@ -41,8 +40,8 @@ int core_num() {
 void 
 parse_apic_id(cpuid_info_t info_l0, cpuid_info_t info_l1, APIC_ID_t *my_id){
 
-	    // Get the SMT ID
-        uint64_t smt_mask_width = info_l0.eax & 0x1f;
+	// Get the SMT ID
+	uint64_t smt_mask_width = info_l0.eax & 0x1f;
 	uint64_t smt_mask = ~((-1) << smt_mask_width);
 	my_id->smt_id = info_l0.edx & smt_mask;
 

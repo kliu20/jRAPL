@@ -6,6 +6,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <string.h>
+#include<inttypes.h>
 #include "CPUScaler.h"
 #include "arch_spec.h"
 #include "msr.h"
@@ -109,9 +110,12 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 		sprintf(cpu_buffer, "%f", pp0[i]);
 		
 		//allocate space for string
+		//printf("%" PRIu32 "\n", cpu_model);
+		printf("%d\n", cpu_model);
 		switch(cpu_model) {
 			case SANDYBRIDGE_EP:
 	
+				printf("SANDYBRIDGE_EP\n");
 				result = read_msr(fd[i],MSR_DRAM_ENERGY_STATUS);
 				dram[i] =(double)result*rapl_unit.energy;
 
@@ -149,7 +153,7 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 			case SANDYBRIDGE:
 			case IVYBRIDGE:
 
-
+				printf("SANDYBRIDGE OR IVYBRIDGE\n");
 				result = read_msr(fd[i],MSR_PP1_ENERGY_STATUS);
 				pp1[i] = (double) result *rapl_unit.energy;
 
@@ -183,6 +187,10 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 				}
 				
 				break;
+		default:
+				printf("non of archtectures are detected\n");
+				break;
+
 
 		}
 	}
