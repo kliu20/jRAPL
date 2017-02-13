@@ -111,11 +111,15 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 		
 		//allocate space for string
 		//printf("%" PRIu32 "\n", cpu_model);
-		printf("%d\n", cpu_model);
 		switch(cpu_model) {
 			case SANDYBRIDGE_EP:
+			case HASWELL1:
+			case HASWELL2:
+			case HASWELL3:
+			case HASWELL_EP:
+			case SKYLAKE1:
+			case SKYLAKE2:
 	
-				printf("SANDYBRIDGE_EP\n");
 				result = read_msr(fd[i],MSR_DRAM_ENERGY_STATUS);
 				dram[i] =(double)result*rapl_unit.energy;
 
@@ -153,7 +157,7 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 			case SANDYBRIDGE:
 			case IVYBRIDGE:
 
-				printf("SANDYBRIDGE OR IVYBRIDGE\n");
+
 				result = read_msr(fd[i],MSR_PP1_ENERGY_STATUS);
 				pp1[i] = (double) result *rapl_unit.energy;
 

@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include <jni.h>
 
+/**
+ * Reference Intel ® 64 and IA-32 Architectures Software Developer’s Manual
+ * for those CPUID information (December 2016)
+ */
 #define MSR_RAPL_POWER_UNIT		0x606
 
 /**Energy measurement**/

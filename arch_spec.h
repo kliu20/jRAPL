@@ -6,12 +6,18 @@
 /**
  * Reference Intel ® 64 and IA-32 Architectures Software Developer’s Manual
  * for those CPUID information (December 2016)
+ *
+ * Table: CPUID Signature Values of DisplayFamily_DisplayModel
  */
 #define SANDYBRIDGE          0x2AU
 #define SANDYBRIDGE_EP       0x2DU
 #define IVYBRIDGE            0x3AU
 #define SKYLAKE1             0x4EU
 #define SKYLAKE2             0x5EU
+#define HASWELL1			 0x3CU
+#define HASWELL2			 0x45U
+#define HASWELL3			 0x46U
+#define HASWELL_EP			 0x3FU
 #define CPUID                              \
     __asm__ volatile ("cpuid"                             \
 			: "=a" (eax),     \
