@@ -3,11 +3,11 @@ Introduction
 
 For a general explanation, check our [webpage](http://kliu20.github.io/jRAPL/).
 
-jRAPL works for three Intel architectures -- Sandy Bridge, Sandy Bridge_ep (Server) and Ivy Bridge. Each architecture has different RAPL support.
+jRAPL works for Intel microarchitectures of Skylake, Haswell, Sandy Bridge, Sandy Bridge_ep (Server) and Ivy Bridge. Each architecture has different RAPL support.
 
 - Sandy Bridge/Ivy Bridge: uncore GPU, CPU and package support.
 
-- Sandy Bridge_ep: DRAM, CPU and package support.
+- Skylake, Haswell, Sandy Bridge_ep: DRAM, CPU and package support.
 
 You need check which one is your CPU architecture before you use jRAPL.
 
