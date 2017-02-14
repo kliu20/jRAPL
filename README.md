@@ -46,6 +46,11 @@ jRAPL includes the following methods, and it needs to be declared like the follo
 
 The `EnergyCheckUtils.java` class provide a working sample on how to use jRAPL.
 
+Updates
+--------------------------------------------------------------
+Support microarchitectures of Skylake and Haswell. (Feb 13 2017)
+
+
 
 Known limitations
 --------------------------------------------------------------
