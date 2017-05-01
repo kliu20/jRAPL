@@ -58,21 +58,22 @@ The `EnergyCheckUtils.java` class provide a working sample on how to use jRAPL.
 For Perf counter measurement, you don't need root/sudo access to run the library.
 It has a seperate set of APIs which include:
 
-- `public native static void perfInit(int numEvents, int isSet);
-- `public native static void singlePerfEventCheck(String eventNames);
-- `public native static void groupPerfEventsCheck(String eventNames);
-- `public native static void perfEnable();
-- `public native static void perfDisable();
-- `public native static void perfSingleRead(int id, long[] buffer);
-- `public native static void perfMultRead(long[] buffer);
-- `public native static long processSingleValue(long[] buffer);
-- `public native static long[] processMultiValue(long[] buffer);
+- `public native static void perfInit(int numEvents, int isSet);`
+- `public native static void singlePerfEventCheck(String eventNames);`
+- `public native static void groupPerfEventsCheck(String eventNames);`
+- `public native static void perfEnable();`
+- `public native static void perfDisable();`
+- `public native static void perfSingleRead(int id, long[] buffer);`
+- `public native static void perfMultRead(long[] buffer);`
+- `public native static long processSingleValue(long[] buffer);`
+- `public native static long[] processMultiValue(long[] buffer);`
 
-Both energy check perf counter check can be easily used by accessing helper classes: EnergyCheckUtils and PerfCheckUtils.
+Energy check and perf counter check can be easily used by accessing helper classes: `EnergyCheckUtils` and `PerfCheckUtils` respectively.
 
 Updates
 --------------------------------------------------------------
 Support microarchitectures of Skylake and Haswell. (Feb 13 2017)
+
 Support perf hardware counter check. (May 01 2017)
 
 
