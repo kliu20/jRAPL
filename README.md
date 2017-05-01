@@ -1,7 +1,7 @@
 Introduction
 --------------------------------------------------------------
 
-For a general explanation, check our [webpage](http://kliu20.github.io/jRAPL/).
+For a general explanation of energy measurement, check our [webpage](http://kliu20.github.io/jRAPL/).
 
 jRAPL works for Intel microarchitectures of Skylake, Haswell, Sandy Bridge, Sandy Bridge_ep (Server) and Ivy Bridge. Each architecture has different RAPL support.
 
@@ -13,7 +13,7 @@ You need check which one is your CPU architecture before you use jRAPL.
 
 For more details about RAPL, check the main [reference](https://software.intel.com/en-us/articles/intel-power-governor)
 
-Pre-requisites
+Pre-requisites for energy measurement
 --------------------------------------------------------------
 
 This library uses the kernel `msr` module. To use, type
@@ -25,12 +25,20 @@ sudo modprobe msr
 Build
 --------------------------------------------------------------
 
-To generate the library for JNI, type
+To generate energy measurement library for JNI, type
 
 ```
-make
+make lib_shared_CPUScaler
 ```
+To generate hardware counter measurement library for JNI, type
 
+```
+make lib_shared_perfChecker
+```
+To generate both libraries for JNI, type
+```
+make all
+```
 How to use
 --------------------------------------------------------------
 
@@ -46,16 +54,33 @@ jRAPL includes the following methods, and it needs to be declared like the follo
 
 The `EnergyCheckUtils.java` class provide a working sample on how to use jRAPL.
 
+
+For Perf counter measurement, you don't need root/sudo access to run the library.
+It has a seperate set of APIs which include:
+
+- `public native static void perfInit(int numEvents, int isSet);
+- `public native static void singlePerfEventCheck(String eventNames);
+- `public native static void groupPerfEventsCheck(String eventNames);
+- `public native static void perfEnable();
+- `public native static void perfDisable();
+- `public native static void perfSingleRead(int id, long[] buffer);
+- `public native static void perfMultRead(long[] buffer);
+- `public native static long processSingleValue(long[] buffer);
+- `public native static long[] processMultiValue(long[] buffer);
+
+Both energy check perf counter check can be easily used by accessing helper classes: EnergyCheckUtils and PerfCheckUtils.
+
 Updates
 --------------------------------------------------------------
 Support microarchitectures of Skylake and Haswell. (Feb 13 2017)
+Support perf hardware counter check. (May 01 2017)
 
 
 
 Known limitations
 --------------------------------------------------------------
 
-It only works for at most 2 sockets CPU.
+Energy check only works for at most 2 sockets CPU.
 
 
 Contributions
