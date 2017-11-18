@@ -16,7 +16,7 @@ For more details about RAPL, check the main [reference](https://software.intel.c
 Pre-requisites for energy measurement
 --------------------------------------------------------------
 
-JRAPL only supports Linux system. It currently supports energy measurement and hardware counters measurement.
+JRAPL only supports Linux system. It currently supports energy measurement and hardware counters measurements.
 
 1) Energy check library uses the Linux kernel `msr` module. To use, type
 
