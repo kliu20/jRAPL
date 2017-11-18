@@ -16,13 +16,19 @@ For more details about RAPL, check the main [reference](https://software.intel.c
 Pre-requisites for energy measurement
 --------------------------------------------------------------
 
-Energy check library uses the kernel `msr` module. To use, type
+JRAPL only supports Linux system. It currently supports energy measurement and hardware counters measurement.
+
+1) Energy check library uses the Linux kernel `msr` module. To use, type
 
 ```
 sudo modprobe msr
 ```
-Perf counters check library depends on Libpfm4 (http://perfmon2.sourceforge.net/docs_v4.html) library. Therefore, you should go to libpfm with command 
-`cd libpfm/` and then type `sudo make install` to install necessary libraries and header files on your system.
+2) Perf counters check library depends on Libpfm4 (http://perfmon2.sourceforge.net/docs_v4.html) library. Therefore, you should go to libpfm with command 
+```
+cd libpfm/ 
+sudo make install 
+```
+to install necessary libraries and header files on your system.
 
 Build
 --------------------------------------------------------------
