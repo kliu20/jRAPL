@@ -119,6 +119,8 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 			case HASWELL_EP:
 			case SKYLAKE1:
 			case SKYLAKE2:
+			case BROADWELL:
+			case BROADWELL2:
 	
 				result = read_msr(fd[i],MSR_DRAM_ENERGY_STATUS);
 				dram[i] =(double)result*rapl_unit.energy;

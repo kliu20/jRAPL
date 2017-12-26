@@ -18,6 +18,8 @@
 #define HASWELL2			 0x45U
 #define HASWELL3			 0x46U
 #define HASWELL_EP			 0x3FU
+#define BROADWELL			       0xD4U
+#define BROADWELL2	     0x4FU
 #define CPUID                              \
     __asm__ volatile ("cpuid"                             \
 			: "=a" (eax),     \
