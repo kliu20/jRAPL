@@ -72,6 +72,7 @@ JNIEXPORT jint JNICALL Java_EnergyCheckUtils_GetSocketNum(JNIEnv *env, jclass jc
 	return (jint)getSocketNum();
 }
 
+#define MSR_DRAM_ENERGY_UNIT 0.000015
 
 JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 		jclass jcls) {
@@ -123,7 +124,11 @@ JNIEXPORT jstring JNICALL Java_EnergyCheckUtils_EnergyStatCheck(JNIEnv *env,
 			case BROADWELL2:
 	
 				result = read_msr(fd[i],MSR_DRAM_ENERGY_STATUS);
-				dram[i] =(double)result*rapl_unit.energy;
+				if (cpu_model == BROADWELL || cpu_model == BROADWELL2) {
+					dram[i] =(double)result*MSR_DRAM_ENERGY_UNIT;
+				} else {
+					dram[i] =(double)result*rapl_unit.energy;
+				}
 
 				sprintf(dram_buffer, "%f", dram[i]);
 
