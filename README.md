@@ -16,7 +16,7 @@ For more details about RAPL, check the main [reference](https://software.intel.c
 Pre-requisites for energy measurement
 --------------------------------------------------------------
 
-JRAPL only supports Linux system. It currently supports energy measurement and hardware counters measurements.
+JRAPL only supports Linux system which should be directly installed on your machine. So you cannot measure the energy consumption as well as the hardware counters information on virtual machine since jRAPL needs to access the real respective registers. It currently supports energy measurement and hardware counters measurements (Cache hits, cache references, TLB hits, TLB misses, page faults, and etc.). For more information about the hardware counters measurements, check [reference](https://perf.wiki.kernel.org/index.php/Tutorial#Counting_with_perf_stat). Instead of `tool perf` on Linux which supports application level measurements. We supply APIs to measure those counters information with finer granularity in Java program.
 
 1) Energy check library uses the Linux kernel `msr` module. To use, type
 
