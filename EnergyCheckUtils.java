@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.lang.reflect.Field;
 public class EnergyCheckUtils {
 	public native static int scale(int freq);
@@ -46,9 +48,17 @@ public class EnergyCheckUtils {
 			double[] stats = new double[3];
 			String[] energy = EnergyInfo.split("#");
 
-			stats[0] = Double.parseDouble(energy[0]);
-			stats[1] = Double.parseDouble(energy[1]);
-			stats[2] = Double.parseDouble(energy[2]);
+			NumberFormat nf = NumberFormat.getInstance();
+			
+			try {
+				stats[0] = nf.parse(energy[0]).doubleValue();
+				stats[1] = nf.parse(energy[1]).doubleValue();
+				stats[2] = nf.parse(energy[2]).doubleValue();
+			} catch (ParseException e) {
+				stats[0] = 0.0;
+				stats[1] = 0.0;
+				stats[2] = 0.0;
+			}
 
 			return stats;
 
